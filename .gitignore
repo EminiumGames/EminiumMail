@@ -1,0 +1,81 @@
+# Dependencies
+node_modules/
+**/npm-debug.log*
+**/lerna-debug.log*
+
+# Build outputs
+app/dist/
+app/dist-docs/
+**/build/resources/certs/
+n1_cloud_dist/
+
+# Native modules & binaries
+**/*.so*
+**/*.bin
+**/*.dll
+**/mailsync
+**/mailsync.exe
+**/mailsync.dSYM
+**/mailsync.dSYM.zip
+
+# Test & dev artifacts
+spec-saved-state.json
+/test-results/
+/playwright-report/
+/playwright/test-results/
+
+# IDE & editor files
+.idea/
+**/.arcconfig
+**/.arclint
+**/arclib
+**/.claude/worktrees/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor swap files
+**/*.swp
+**/*.swo
+**/*~
+**/*#
+**/#emacs
+
+# Certificates
+**/*.p12
+**/*.cer
+certs/
+
+# Private plugins (symlinked)
+**/internal_packages/composer-mail-merge
+**/internal_packages/composer-scheduler
+**/internal_packages_disabled/
+
+# Jasmine config
+**/jasmine/config.json
+
+# Python
+*.pyc
+scripts/sqlite
+scripts/toolbox
+scripts/venv
+
+# OAuth secrets
+client_secret.json
+
+# Development logs
+/logfile.txt
+
+# Snap build
+/snap/snapcraft.yml
+/snap/.snapcraft/
+
+# Elastic Beanstalk
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Exceptions: keep node_modules in fixtures
+!app/spec/fixtures/packages/package-with-incompatible-native-module/node_modules
+*app*
