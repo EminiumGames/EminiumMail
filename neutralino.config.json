@@ -1,0 +1,23 @@
+{
+  "applicationId": "ovh.eminium.mail",
+  "version": "1.0.0",
+  "defaultMode": "window",
+  "port": 0,
+  "documentRoot": "/resources",
+  "url": "/index.html",
+  "enableServer": true,
+  "nativeAllowList": ["app.*", "os.*", "debug.log"],
+  "modes": {
+    "window": {
+      "title": "Eminium Mail",
+      "width": 1380,
+      "height": 860,
+      "minWidth": 1160,
+      "minHeight": 760,
+      "resizable": true,
+      "fullscreen": false,
+      "borderless": false,
+      "enableInspector": false
+    }
+  }
+}

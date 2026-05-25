@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eminium Mail</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">EM</div>
+          <div>
+            <h1>Eminium Mail</h1>
+            <p>Multi-boites, alertes instantanees, lecture rapide.</p>
+          </div>
+        </div>
+
+        <div class="status-card">
+          <div class="status-dot" id="backend-dot"></div>
+          <div>
+            <strong id="backend-label">Backend hors ligne</strong>
+            <span id="backend-detail">Connexion locale en attente</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="section-head">
+            <h2>Comptes</h2>
+            <button id="refresh-btn" class="ghost">Rafraichir</button>
+          </div>
+          <div id="account-list" class="account-list"></div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="section-head">
+            <h2>Actions</h2>
+          </div>
+          <button id="add-account-btn" class="primary full">Ajouter un compte</button>
+          <button id="startup-btn" class="ghost full">Activer le demarrage automatique</button>
+          <button id="sync-all-btn" class="ghost full">Forcer la synchro</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Boite de reception unifiee</p>
+            <h2 id="view-title">Aucun compte selectionne</h2>
+          </div>
+          <div class="stats">
+            <div>
+              <strong id="stat-unread">0</strong>
+              <span>non lus</span>
+            </div>
+            <div>
+              <strong id="stat-accounts">0</strong>
+              <span>comptes</span>
+            </div>
+            <div>
+              <strong id="stat-new">0</strong>
+              <span>nouveaux</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="content-grid">
+          <div class="panel inbox-panel">
+            <div class="panel-head">
+              <h3>Messages</h3>
+              <select id="account-filter"></select>
+            </div>
+            <div id="message-list" class="message-list"></div>
+          </div>
+
+          <div class="panel reader-panel">
+            <div id="message-empty" class="empty-state">
+              <h3>Selectionne un message</h3>
+              <p>Le contenu du mail s'affichera ici, avec l'en-tete, le texte et le HTML rendu de maniere isolee.</p>
+            </div>
+
+            <article id="message-view" class="message-view hidden">
+              <div class="message-meta">
+                <h3 id="message-subject"></h3>
+                <div id="message-tags" class="message-tags"></div>
+              </div>
+              <div class="message-header-grid">
+                <div>
+                  <span>De</span>
+                  <strong id="message-from"></strong>
+                </div>
+                <div>
+                  <span>Date</span>
+                  <strong id="message-date"></strong>
+                </div>
+                <div>
+                  <span>Compte</span>
+                  <strong id="message-account"></strong>
+                </div>
+              </div>
+              <div class="message-body-switch">
+                <button class="ghost active" data-body-tab="html">HTML</button>
+                <button class="ghost" data-body-tab="text">Texte</button>
+              </div>
+              <iframe id="message-html" class="message-html" sandbox=""></iframe>
+              <pre id="message-text" class="message-text hidden"></pre>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="account-dialog" class="dialog">
+      <form id="account-form" method="dialog">
+        <div class="dialog-head">
+          <div>
+            <h3 id="account-form-title">Ajouter un compte</h3>
+            <p>Connecte une boite IMAP et define son rythme de synchronisation.</p>
+          </div>
+          <button type="button" id="close-dialog-btn" class="ghost">Fermer</button>
+        </div>
+
+        <input type="hidden" id="account-id" />
+
+        <div class="form-grid">
+          <label>
+            Nom du compte
+            <input id="account-label" required placeholder="Ex: Personnel" />
+          </label>
+          <label>
+            Serveur IMAP
+            <input id="account-host" required placeholder="imap.example.com" />
+          </label>
+          <label>
+            Port
+            <input id="account-port" type="number" min="1" max="65535" value="993" required />
+          </label>
+          <label>
+            Chiffrement
+            <select id="account-encryption">
+              <option value="ssl">SSL</option>
+              <option value="starttls">STARTTLS</option>
+              <option value="plain">Aucun</option>
+            </select>
+          </label>
+          <label>
+            Nom d'utilisateur
+            <input id="account-username" required placeholder="utilisateur@example.com" />
+          </label>
+          <label>
+            Mot de passe
+            <input id="account-password" type="password" placeholder="Laisse vide pour conserver" />
+          </label>
+          <label>
+            Dossier
+            <input id="account-folder" value="INBOX" />
+          </label>
+          <label>
+            Intervalle de synchro (sec)
+            <input id="account-interval" type="number" min="15" value="60" />
+          </label>
+        </div>
+
+        <div class="dialog-actions">
+          <button type="button" id="test-account-btn" class="ghost">Tester la connexion</button>
+          <button type="submit" class="primary">Enregistrer</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="js/neutralino.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
