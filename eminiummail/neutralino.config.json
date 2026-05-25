@@ -1,12 +1,24 @@
 {
   "applicationId": "ovh.eminium.mail",
   "version": "1.0.0",
+  "cli": {
+    "resourcesPath": "/resources/",
+    "extensionsPath": "/extensions/",
+    "clientLibrary": "/resources/js/neutralino.js",
+    "binaryName": "eminium-mail",
+    "binaryVersion": "6.7.0",
+    "clientVersion": "6.7.0"
+  },
   "defaultMode": "window",
   "port": 0,
   "documentRoot": "/resources",
   "url": "/index.html",
   "enableServer": true,
-  "nativeAllowList": ["app.*", "os.*", "debug.log"],
+  "nativeAllowList": [
+    "app.*",
+    "os.*",
+    "debug.log"
+  ],
   "modes": {
     "window": {
       "title": "Eminium Mail",
