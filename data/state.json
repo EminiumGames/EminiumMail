@@ -3,7 +3,23 @@
     "autostartEnabled": false,
     "launcherPath": ""
   },
-  "accounts": [],
+  "accounts": [
+    {
+      "id": "acc-test-gmail-1779702852",
+      "label": "Test Gmail",
+      "host": "imap.gmail.com",
+      "port": 993,
+      "encryption": "ssl",
+      "username": "test@gmail.com",
+      "password": "test-password",
+      "folder": "INBOX",
+      "pollInterval": 60,
+      "last_uid": 0,
+      "unreadCount": 0,
+      "lastSyncAt": "",
+      "lastError": "b'[AUTHENTICATIONFAILED] Invalid credentials (Failure)'"
+    }
+  ],
   "messages": [],
   "events": []
 }
